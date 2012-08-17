@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title> Rasterizer </title>
+
+		<!-- CSS -->
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+
+		<!-- JS -->
+		<script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
+		<script type="text/javascript" src="js/Rasterizer.js"></script>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-22825241-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	
+
+		<script>
+			window.onload = function() {
+				Rasterizer.init();
+				
+				var gui = new dat.GUI();
+
+				gui.add(Rasterizer, 'style', [ 'dots', 'squares', 'horizontal-lines', 'diagonal-lines' ] ).onFinishChange( function(value) { Rasterizer.draw() } );
+				gui.add(Rasterizer, 'intensity', 0.2, 3 ).onChange( function(value) { Rasterizer.draw() } );
+				gui.add(Rasterizer, 'invert').name( 'Invert' ).onFinishChange( function(value) { Rasterizer.draw() } );
+				gui.add(Rasterizer, 'useUnderlyingColors').name( 'Use Colors' ).onFinishChange( function(value) { Rasterizer.draw() } );
+				gui.add(Rasterizer, 'uploadImage').name( 'Upload an Image' );
+				gui.add(Rasterizer, 'save').name( 'Save' );
+			};
+		</script>
+
+	</head>
+
+	<body>
+		<div id='info'>
+			<a href="http://tholman.com/blog/rasterizer" title="Read more about Rasterizer"> <b>Rasterizer:</b> </a> Another fun yet useless experiment from <a href="http://tholman.com" title="See more awesome experiments!"> Tim Holman </a> : <a href="http://twitter.com/twholman" title="You'll love my tweets, I promise ;)" > @Twholman </a>
+		</div>
+		<canvas id='canvas'></canvas>
+	</body>
+
+</html>
