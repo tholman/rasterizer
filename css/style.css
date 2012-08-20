@@ -6,7 +6,6 @@ body {
 
 /*Canvas element - initially hidden*/
 canvas {
-	background-color: #fff;
 	position: absolute;
 	display: none;
 	left: 50%;
